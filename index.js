@@ -49,8 +49,7 @@ function getLatestMessages() {
             messageContainer.setAttribute("id", message.id);
 
             if (currentUser) {
-                messageContainer.style.backgroundColor = "#6b0772";
-                messageContainer.style.textAlign = "right";
+                messageContainer.classList.add('current-user');
             }
 
             const messageContent = document.createElement("p");

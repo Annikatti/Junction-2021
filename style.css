@@ -138,6 +138,13 @@ img {
     background-color: rgba(255, 255, 255, 0.35);
     color: #fff;
     padding: 7.5px;
+    max-width: 80%;
+}
+
+#chat .message-container.current-user {
+    background-color: #6b0772;
+    text-align: right;
+    margin-left: auto;
 }
 
 #chat .message-container:not(:last-of-type) {
