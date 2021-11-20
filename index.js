@@ -5,7 +5,7 @@ let username = null;
 socket.on('chat message', (message) => appendMessage(message));
 
 function sendMessage() {
-    const messageElement = document.getElementById("message").value;
+    const messageElement = document.getElementById("message");
     const user = document.getElementById("username");
     username = user.value;
 
