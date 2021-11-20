@@ -2,11 +2,6 @@ const activeFilters = [];
 const socket = io();
 let username = null;
 
-requestAnimationFrame(() => {
-    const chatWindow = document.getElementById("chat");
-    chatWindow.value = "";
-})
-
 socket.on('chat message', (message) => appendMessage(message));
 
 function sendMessage() {
@@ -23,6 +18,7 @@ function sendMessage() {
 }
 
 function appendMessage(message) {
+    const chatWindow = document.getElementById("chat");
     const currentUser = message.data.username === username;
 
     const messageContainer = document.createElement("div");
