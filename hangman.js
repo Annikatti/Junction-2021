@@ -20,7 +20,7 @@ for (i=0; i<wordArray.length; i++){
     textArray.push("_ ")
 }
 document.getElementById("guessLines").innerHTML = text;
-document.getElementById("tree").src= "initialise.png"
+document.getElementById("tree").src= "hangman_images/initialise.png"
 
 //Verrataan arvausta oikeaan stringiin ja tarkistetaan voitto/epäonnistuminen
 function guess(){
@@ -54,7 +54,7 @@ function checkFail(usedLetter){
     if (fail == 0){
         counter ++;
         console.log(counter);
-        document.getElementById("tree").src= "phase"+counter+".png"
+        document.getElementById("tree").src= "hangman_images/phase"+counter+".png"
     }
     document.getElementById("usedLetters").innerHTML = used;
     if(counter == 6){
