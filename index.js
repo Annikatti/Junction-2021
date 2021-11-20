@@ -97,8 +97,11 @@ function usersInteractions(messageJson) {
         }
         i++
     }
+
     for (i = 1; i <= 3; i++) {
-        document.getElementById("message" + i).innerHTML = localStorage.getItem("username") + ": " + recent[recent.length - i];
+        if (i <= recent -1) {
+            document.getElementById("message" + i).innerHTML = localStorage.getItem("username") + ": " + recent[recent.length - i];
+        }
     }
 
 }
