@@ -2,6 +2,18 @@ const activeFilters = [];
 let username = null;
 let latestMessages = null;
 
+function pageload(){
+    var message1 = "gg"
+    var message2 = "Good job guys!"
+    var message3 = "Thank you!"
+
+    console.log(localStorage.getItem("username"));
+    document.getElementById("uname").innerHTML = localStorage.getItem("username");
+    document.getElementById("message1").innerHTML= localStorage.getItem("username") +": "+ message1
+    document.getElementById("message2").innerHTML= localStorage.getItem("username") +": "+ message2
+    document.getElementById("message3").innerHTML= localStorage.getItem("username") +": "+ message3
+}
+
 requestAnimationFrame(() => {
     getLatestMessages();
     document.getElementById("username").value = username;
@@ -77,16 +89,12 @@ function postMessage(messageContent) {
 }
 
 async function sendMessage() {
-    let user = document.getElementById("username");
-    username = user.value;
-    if (!username) {
-        user.style.borderColor = "red";
-        return;
-    } else {
-        user.style.border = null;
-    }
+    username = localStorage.getItem("username");
 
     const messageElement = document.getElementById("message");
     postMessage(messageElement.value);
     messageElement.value = "";
 }
+
+
+//asettaa usernamen ja ohjaa "pelin" sivulle

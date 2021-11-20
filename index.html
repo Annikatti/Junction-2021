@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body onload="pageload();">
     <h1>Best Game Ever!</h1>
     <header>
         <button id="play-button" onclick="changeTab('play')">
@@ -31,15 +31,15 @@
     <section id="play">
         <div class="left">
             <div class="battlepass">
-                <h2>NicestPlayerEver93</h2>
+                <h2 id ="uname">NicestPlayerEver93</h2>
                 <h2>Battlepass</h2>
                 <p>LEVEL: 56</p>
             </div>
             <div class="recentChat">
                 <h2>Your recent chat Interactions</h2>
-                <p>NicestPlayerEver93: gg</p>
-                <p>NicestPlayerEver93: Good job guys!</p>
-                <p>NicestPlayerEver93: Thank you!</p>
+                <p id ="message1">NicestPlayerEver93: gg</p>
+                <p id ="message2">NicestPlayerEver93: Good job guys!</p>
+                <p id ="message3">NicestPlayerEver93: Thank you!</p>
             </div>
         </div>
         <div class="yourAvatar">
@@ -70,8 +70,6 @@
         </div>
     </section>
 
-    <label for="username" id="username-label">username</label>
-    <input id="username" type="text">
     <!-- <button onclick="getLatestMessages()">Refresh messages</button> -->
     <div id="chat-container">
         <div id="chat"></div>
