@@ -11,6 +11,10 @@ socket.on('chat message', (message) => {
     messageTextarea.scrollIntoView();
 });
 
+socket.on('inappropriate message', () => {
+    window.location.href = "hangman.html";
+});
+
 function sendMessage() {
     const messageElement = document.getElementById("message");
 
