@@ -2,6 +2,8 @@ const activeFilters = [];
 let username = null;
 let latestMessages = null;
 
+var socket = io();
+
 function addWord() {
     const filterBy = document.getElementById("filter-by");
     activeFilters.push(filterBy.value.trim());
@@ -72,15 +74,14 @@ function emphatizeMessage(messageContent) {
 }
 
 function postMessage(messageContent) {
-    const xmlHttp = new XMLHttpRequest();
-    try {
-        xmlHttp.open("POST", 'https://us-central1-junction-2021-fee21.cloudfunctions.net/webApi/api/v1/message', true);
-        xmlHttp.setRequestHeader('Content-Type', 'application/json');
-        xmlHttp.send(JSON.stringify({ "username": username, "message": messageContent }));
-        xmlHttp.onload = () => getLatestMessages();
-    } catch (error) {
-        console.log(error);
-    }
+        // xmlHttp.open("POST", 'https://us-central1-junction-2021-fee21.cloudfunctions.net/webApi/api/v1/message', true);
+        // xmlHttp.setRequestHeader('Content-Type', 'application/json');
+        // xmlHttp.send(JSON.stringify({ "username": username, "message": messageContent }));
+        // xmlHttp.onload = () => getLatestMessages();
+    socket.emit('chat message', {
+        username: username,
+        message: messageContent
+    });
 }
 
 async function sendMessage() {
