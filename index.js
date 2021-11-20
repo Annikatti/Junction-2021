@@ -8,6 +8,8 @@ requestAnimationFrame(() => {
 });
 
 var socket = io();
+requestAnimationFrame(() => getLatestMessages());
+
 
 function addWord() {
     const filterBy = document.getElementById("filter-by");
