@@ -135,7 +135,7 @@ img {
     display: flex;
     flex-direction: column;
     border-radius: 6px;
-    background-color: rgba(255, 255, 255, 0.35);
+    background-color: #360167;
     color: #fff;
     padding: 7.5px;
     max-width: 80%;
@@ -169,6 +169,7 @@ img {
 #chat-container textarea {
     width: 100%;
     margin: 2.5px;
+    border: none;
     border-radius: 3px;
     resize: none;
 }
