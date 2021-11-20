@@ -1,6 +1,14 @@
-body{
+body {
     padding-top: 20%;
     text-align: center;
     background-color: rgb(176, 230, 255);
     font-family: monospace;
+}
+
+h2 {
+    font-size: 3em;
+}
+
+input, button {
+    font-size: 1.5em;
 }
