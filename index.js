@@ -65,13 +65,14 @@ function getLatestMessages() {
             messageContainer.appendChild(messageCreatedAt);
             chatWindow.appendChild(messageContainer);
         })
+        const message = document.getElementById('message');
+        message.scrollIntoView();
     } catch (error) {
         console.log(error);
     }
 }
 
 function emphatizeMessage(messageContent) {
-    const xmlHttp = new XMLHttpRequest();
 
     try {
         xmlHttp.open("POST", '', true);
@@ -84,11 +85,13 @@ function emphatizeMessage(messageContent) {
 }
 
 function postMessage(messageContent) {
+    const xmlHttp = new XMLHttpRequest();
     xmlHttp.open("POST", 'https://us-central1-junction-2021-fee21.cloudfunctions.net/webApi/api/v1/message', true);
     xmlHttp.setRequestHeader('Content-Type', 'application/json');
     xmlHttp.send(JSON.stringify({ "username": username, "message": messageContent }));
     xmlHttp.onload = () => getLatestMessages();
 }
+
 
 async function sendMessage() {
     let user = document.getElementById("username");
