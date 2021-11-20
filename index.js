@@ -2,16 +2,16 @@ const activeFilters = [];
 let username = null;
 let latestMessages = null;
 
-function pageload(){
+function pageload() {
     var message1 = "gg"
     var message2 = "Good job guys!"
     var message3 = "Thank you!"
 
     console.log(localStorage.getItem("username"));
     document.getElementById("uname").innerHTML = localStorage.getItem("username");
-    document.getElementById("message1").innerHTML= localStorage.getItem("username") +": "+ message1
-    document.getElementById("message2").innerHTML= localStorage.getItem("username") +": "+ message2
-    document.getElementById("message3").innerHTML= localStorage.getItem("username") +": "+ message3
+    document.getElementById("message1").innerHTML = localStorage.getItem("username") + ": " + message1
+    document.getElementById("message2").innerHTML = localStorage.getItem("username") + ": " + message2
+    document.getElementById("message3").innerHTML = localStorage.getItem("username") + ": " + message3
 }
 
 requestAnimationFrame(() => {
@@ -76,17 +76,21 @@ function getLatestMessages() {
             messageContainer.appendChild(messageCreatedAt);
             chatWindow.appendChild(messageContainer);
         })
+        const message = document.getElementById('message');
+        message.scrollIntoView();
     } catch (error) {
         console.log(error);
     }
 }
 
 function postMessage(messageContent) {
+    const xmlHttp = new XMLHttpRequest();
     xmlHttp.open("POST", 'https://us-central1-junction-2021-fee21.cloudfunctions.net/webApi/api/v1/message', true);
     xmlHttp.setRequestHeader('Content-Type', 'application/json');
     xmlHttp.send(JSON.stringify({ "username": username, "message": messageContent }));
     xmlHttp.onload = () => getLatestMessages();
 }
+
 
 async function sendMessage() {
     username = localStorage.getItem("username");
@@ -96,20 +100,19 @@ async function sendMessage() {
     messageElement.value = "";
 }
 
-function usersInteractions(messageJson){
+function usersInteractions(messageJson) {
     var messageAmount = 0;
-    var recent =[]
-    for (i=0; i<messageJson.length; i++){
-        if (messageJson[i].data.username === localStorage.getItem("username")){
+    var recent = []
+    for (i = 0; i < messageJson.length; i++) {
+        if (messageJson[i].data.username === localStorage.getItem("username")) {
             recent.push(messageJson[i].data.message)
-            messageAmount ++;
+            messageAmount++;
         }
         i++
     }
     console.log(recent)
-    document.getElementById("message3").innerHTML= localStorage.getItem("username") +": "+ recent[recent.length-3]
-    document.getElementById("message1").innerHTML= localStorage.getItem("username") +": "+ recent[recent.length-2]
-    document.getElementById("message2").innerHTML= localStorage.getItem("username") +": "+ recent[recent.length-1]
-  
-}
+    document.getElementById("message3").innerHTML = localStorage.getItem("username") + ": " + recent[recent.length - 3]
+    document.getElementById("message1").innerHTML = localStorage.getItem("username") + ": " + recent[recent.length - 2]
+    document.getElementById("message2").innerHTML = localStorage.getItem("username") + ": " + recent[recent.length - 1]
 
+}
