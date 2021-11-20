@@ -1,5 +1,5 @@
 const activeFilters = [];
-const username = null;
+let username = null;
 let latestMessages = null;
 
 function addWord() {
@@ -58,10 +58,6 @@ function getLatestMessages() {
     }
 }
 
-function changeUsername() {
-    username = document.getElementById("username").value;
-}
-
 function emphatizeMessage(messageContent) {
     const xmlHttp = new XMLHttpRequest();
 
@@ -88,6 +84,7 @@ function postMessage(messageContent) {
 }
 
 async function sendMessage() {
+    username = document.getElementById("username").value;
     if (!username) {
         alert("You need to give a username!");
         return;
