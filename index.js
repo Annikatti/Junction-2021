@@ -7,10 +7,6 @@ requestAnimationFrame(() => {
     document.getElementById("username").value = username;
 });
 
-var socket = io();
-requestAnimationFrame(() => getLatestMessages());
-
-
 function addWord() {
     const filterBy = document.getElementById("filter-by");
     activeFilters.push(filterBy.value.trim());
@@ -46,7 +42,7 @@ function getLatestMessages() {
         const chatWindow = document.getElementById("chat");
         chatWindow.innerHTML = "";
         latestMessages.forEach(message => {
-            const currentUser = message.data.username === username; 
+            const currentUser = message.data.username === username;
 
             const messageContainer = document.createElement("div");
             messageContainer.setAttribute("class", "message-container");
@@ -88,14 +84,10 @@ function emphatizeMessage(messageContent) {
 }
 
 function postMessage(messageContent) {
-        // xmlHttp.open("POST", 'https://us-central1-junction-2021-fee21.cloudfunctions.net/webApi/api/v1/message', true);
-        // xmlHttp.setRequestHeader('Content-Type', 'application/json');
-        // xmlHttp.send(JSON.stringify({ "username": username, "message": messageContent }));
-        // xmlHttp.onload = () => getLatestMessages();
-    socket.emit('chat message', {
-        username: username,
-        message: messageContent
-    });
+    xmlHttp.open("POST", 'https://us-central1-junction-2021-fee21.cloudfunctions.net/webApi/api/v1/message', true);
+    xmlHttp.setRequestHeader('Content-Type', 'application/json');
+    xmlHttp.send(JSON.stringify({ "username": username, "message": messageContent }));
+    xmlHttp.onload = () => getLatestMessages();
 }
 
 async function sendMessage() {
@@ -109,7 +101,6 @@ async function sendMessage() {
     }
 
     const messageElement = document.getElementById("message");
-    // emphatizeMessage(messageElement.value);
     postMessage(messageElement.value);
     messageElement.value = "";
 }
