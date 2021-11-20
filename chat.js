@@ -30,7 +30,7 @@ function appendMessage(message) {
         return;
     }
 
-    uniqueMessages.push(message.data.id);
+    uniqueMessages.add(message.data.id);
     const chatWindow = document.getElementById("chat");
     const currentUser = message.data.username === username;
 
