@@ -50,7 +50,7 @@ function getLatestMessages() {
         xmlHttp.open("GET", 'https://us-central1-junction-2021-fee21.cloudfunctions.net/webApi/api/v1/messages', false);
         xmlHttp.send(null);
         latestMessages = JSON.parse(xmlHttp.responseText).sort((a, b) => a.data.createdAt > b.data.createdAt ? 1 : -1);
-
+        usersInteractions(latestMessages);
         const chatWindow = document.getElementById("chat");
         chatWindow.innerHTML = "";
         latestMessages.forEach(message => {
@@ -96,5 +96,20 @@ async function sendMessage() {
     messageElement.value = "";
 }
 
+function usersInteractions(messageJson){
+    var messageAmount = 0;
+    var recent =[]
+    for (i=0; i<messageJson.length; i++){
+        if (messageJson[i].data.username === localStorage.getItem("username")){
+            recent.push(messageJson[i].data.message)
+            messageAmount ++;
+        }
+        i++
+    }
+    console.log(recent)
+    document.getElementById("message3").innerHTML= localStorage.getItem("username") +": "+ recent[recent.length-3]
+    document.getElementById("message1").innerHTML= localStorage.getItem("username") +": "+ recent[recent.length-2]
+    document.getElementById("message2").innerHTML= localStorage.getItem("username") +": "+ recent[recent.length-1]
+  
+}
 
-//asettaa usernamen ja ohjaa "pelin" sivulle
