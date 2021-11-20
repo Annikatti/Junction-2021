@@ -1,4 +1,5 @@
 const activeFilters = [];
+const recent = []
 const socket = io();
 const uniqueMessages = new Set();
 
@@ -19,6 +20,7 @@ function sendMessage() {
     });
 
     messageElement.value = "";
+    usersInteractions(messageElement.value);
 }
 
 function appendMessage(message) {
@@ -76,20 +78,16 @@ function changeTab(newTab) {
     })
 }
 
-function usersInteractions(messageJson) {
-    var recent = []
-    for (i = 0; i < messageJson.length; i++) {
-        if (messageJson[i].data.username === localStorage.getItem("username")) {
-            recent.push(messageJson[i].data.message);
-        }
-
-        i++;
+function usersInteractions(message) {
+    const text = message.data.message;
+    recent.push(text);
+    if (recent.length === 3) {
+        recent[2] = recent[1];
+        recent[1] = recent[0];
+        recent[0] = text;
     }
 
-    for (i = 1; i <= 3; i++) {
-        if (i <= recent - 1) {
-            document.getElementById("message" + i).innerHTML = localStorage.getItem("username") + ": " + recent[recent.length - i];
-        }
+    for (i = 0; i < recent.length; i++) {
+        document.getElementById("message" + i + 1).innerHTML = `${localStorage.getItem("username")}: ${text}`;
     }
-
 }
