@@ -7,8 +7,8 @@ requestAnimationFrame(() => document.getElementById("uname").innerHTML = localSt
 
 socket.on('chat message', (message) => {
     appendMessage(message);
-    const message = document.getElementById('message');
-    message.scrollIntoView();
+    const sendMessage = document.getElementById('message');
+    sendMessage.scrollIntoView();
 });
 
 function sendMessage() {
