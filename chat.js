@@ -6,8 +6,8 @@ requestAnimationFrame(() => document.getElementById("uname").innerHTML = localSt
 
 socket.on('chat message', (message) => {
     appendMessage(message);
-    const sendMessage = document.getElementById('message');
-    sendMessage.scrollIntoView();
+    const messageTextarea = document.getElementById('message');
+    messageTextarea.scrollIntoView();
 });
 
 function sendMessage() {
@@ -23,7 +23,7 @@ function sendMessage() {
 
 function appendMessage(message) {
     // Don't add duplicate messages
-    if (uniqueMessages.has(message.data.id)) {
+    if (uniqueMessages.has(message.id)) {
         return;
     }
 
