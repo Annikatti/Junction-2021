@@ -14,10 +14,7 @@ function pageload(){
     document.getElementById("message3").innerHTML= localStorage.getItem("username") +": "+ message3
 }
 
-requestAnimationFrame(() => {
-    getLatestMessages();
-    document.getElementById("username").value = username;
-});
+requestAnimationFrame(() =>  getLatestMessages() );
 
 function addWord() {
     const filterBy = document.getElementById("filter-by");
