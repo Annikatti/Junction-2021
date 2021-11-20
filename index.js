@@ -70,19 +70,6 @@ function getLatestMessages() {
     }
 }
 
-function emphatizeMessage(messageContent) {
-    const xmlHttp = new XMLHttpRequest();
-
-    try {
-        xmlHttp.open("POST", '', true);
-        xmlHttp.setRequestHeader('Content-Type', 'application/json');
-        xmlHttp.send(JSON.stringify({ "message": messageContent }));
-        xmlHttp.onload = () => postMessage(xmlHttp.responseText);
-    } catch (error) {
-        console.log(error);
-    }
-}
-
 function postMessage(messageContent) {
     xmlHttp.open("POST", 'https://us-central1-junction-2021-fee21.cloudfunctions.net/webApi/api/v1/message', true);
     xmlHttp.setRequestHeader('Content-Type', 'application/json');
