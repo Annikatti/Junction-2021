@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Chat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Best Game Ever!</h1>
+    <header>
+        <button id="play-button" onclick="changeTab('play')"><p>Play</p></button>
+        <button id="store-button" onclick="changeTab('store')"><p>Store</p></button>
+        <button id="settings-button" onclick="changeTab('settings')"><p>Settings</p></button>
+    </header>
+
+    <section id="play">
+        <div class="left">
+            <div class="battlepass">
+                <h2>NicestPlayerEver93</h2>
+                <h2>Battlepass</h2>
+                <p>LEVEL: 56</p>
+            </div>
+            <div class="recentChat">
+                <h2>Your recent chat Interactions</h2>
+                <p>NicestPlayerEver93: gg</p>
+                <p>NicestPlayerEver93: Good job guys!</p>
+                <p>NicestPlayerEver93: Thank you!</p>
+            </div>
+        </div>
+        <div class="yourAvatar">
+            <h2>Your Avatar <a class="editAvatar" href="">Edit</a></h2>
+            <img id="avatarImage" src="avatar.svg" alt="avatar">
+        </div>
+    </section>
+
+    <section id="store">
+        Stor
+    </section>
+
+    <section id="settings">
+        <div id="filter">
+            <h2>Profanity filter</h2>
+            <input type="radio" name="filter" id="on">
+            <label for="on" onclick="setFilter(1)">ON</label>
+            <input type="radio" name="filter" id="off">
+            <label for="off" onclick="setFilter(0)">OFF</label>
+        </div>
+        <div id="filtered-words">
+            <div class="new-filter">
+                <input id="filter-by" type="text">
+                <button onclick="addWord()">Add</button>
+            </div>
+            <h2>Filtered words:</h2>
+            <p id="active-filters"></p>
+        </div>
+    </section>
+</body>
+
+</html>

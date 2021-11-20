@@ -1,0 +1,98 @@
+html {
+    margin: 0;
+    padding: 25px 0;
+    min-height: calc(100vh - 50px);
+}
+
+h1 {
+    margin-left: 15px;
+    font-family: 'Anton', sans-serif;
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+header button {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    border: none;
+    margin: 0 15px;
+    justify-content: center;
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+}
+
+section {
+    display: none;
+    padding: 15px;
+    flex-direction: column;
+}
+
+section.display {
+    display: flex;
+}
+
+button.active {
+    font-weight: 700;
+}
+
+#filtered-words {
+    background-color: lightblue;
+}
+
+#play {
+    flex-direction: row;
+}
+
+.battlepass {
+    background-color: #b4b4b4;
+    width: 16em;
+    padding-left: 20px;
+    border: solid black 1px;
+    margin-bottom: 20px;
+}
+
+.recentChat {
+    background-color: #b4b4b4;
+    width: 16em;
+    padding-left: 20px;
+    border: solid black 1px;
+}
+
+.left {
+    display: flex;
+    flex-direction: column
+}
+
+img {
+    height: 500px;
+}
+
+.yourAvatar {
+    margin-left: 15px;
+}
+
+.editAvatar {
+    background-color: black;
+    padding: 5px;
+    text-decoration: none;
+    color: white;
+}
