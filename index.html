@@ -16,9 +16,15 @@
 <body>
     <h1>Best Game Ever!</h1>
     <header>
-        <button id="play-button" onclick="changeTab('play')"><p>Play</p></button>
-        <button id="store-button" onclick="changeTab('store')"><p>Store</p></button>
-        <button id="settings-button" onclick="changeTab('settings')"><p>Settings</p></button>
+        <button id="play-button" onclick="changeTab('play')">
+            <p>Play</p>
+        </button>
+        <button id="store-button" onclick="changeTab('store')">
+            <p>Store</p>
+        </button>
+        <button id="settings-button" onclick="changeTab('settings')">
+            <p>Settings</p>
+        </button>
     </header>
 
     <section id="play">
@@ -62,6 +68,14 @@
             <p id="active-filters"></p>
         </div>
     </section>
+
+    <button onclick="getLatestMessages()">Refresh messages</button>
+    <div id="chat">
+    </div>
+    <div id="send-message">
+        <input type="text" name="message" id="message">
+        <button onclick="sendMessage()">Send</button>
+    </div>
 </body>
 
 </html>

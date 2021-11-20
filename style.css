@@ -96,3 +96,63 @@ img {
     text-decoration: none;
     color: white;
 }
+
+/* CHAT */
+#chat {
+    max-height: 150px;
+    max-width: 600px;
+    width: 100%;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    position: absolute;
+    bottom: 55px;
+    right: 25px;
+  }
+  
+  #chat p {
+    margin: 0;
+  }
+  
+  #chat .message-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.35);
+    color: #fff;
+    padding: 7.5px;
+  }
+  
+  #chat .message-container:not(:last-of-type) {
+    margin-bottom: 10px;
+  }
+  
+  #chat .message-created-at {
+    font-size: 10px;
+    text-align: right;
+  }
+  
+  #chat .likes {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  #chat .likes p {
+    margin-right: 15px;
+  }
+  
+  #send-message {
+    max-width: 600px;
+    width: 100%;
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+  }
+  
+  #send-message input {
+    max-width: calc(100% - 80px);
+    width: 100%;
+    margin: 2.5px;
+    border-radius: 3px;
+  }
+  /* CHAT */
