@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body onload="pageload();">
     <h1>Best Game Ever!</h1>
     <header>
         <button id="play-button" onclick="changeTab('play')">
@@ -31,7 +31,7 @@
     <section id="play">
         <div class="left">
             <div class="battlepass">
-                <h2>NicestPlayerEver93</h2>
+                <h2 id ="uname">NicestPlayerEver93</h2>
                 <h2>Battlepass</h2>
                 <p>LEVEL: 56</p>
             </div>
@@ -70,8 +70,6 @@
         </div>
     </section>
 
-    <label for="username" id="username-label">username</label>
-    <input id="username" type="text">
     <!-- <button onclick="getLatestMessages()">Refresh messages</button> -->
     <div id="chat-container">
         <div id="chat"></div>

@@ -2,6 +2,11 @@ const activeFilters = [];
 let username = null;
 let latestMessages = null;
 
+function pageload(){
+    console.log(localStorage.getItem("username"));
+    document.getElementById("uname").innerHTML = localStorage.getItem("username");
+}
+
 requestAnimationFrame(() => {
     getLatestMessages();
     document.getElementById("username").value = username;
@@ -77,16 +82,12 @@ function postMessage(messageContent) {
 }
 
 async function sendMessage() {
-    let user = document.getElementById("username");
-    username = user.value;
-    if (!username) {
-        user.style.borderColor = "red";
-        return;
-    } else {
-        user.style.border = null;
-    }
+    username = localStorage.getItem("username");
 
     const messageElement = document.getElementById("message");
     postMessage(messageElement.value);
     messageElement.value = "";
 }
+
+
+//asettaa usernamen ja ohjaa "pelin" sivulle
