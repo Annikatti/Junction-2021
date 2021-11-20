@@ -2,6 +2,8 @@ const activeFilters = [];
 let username = null;
 let latestMessages = null;
 
+requestAnimationFrame(() => getLatestMessages());
+
 function addWord() {
     const filterBy = document.getElementById("filter-by");
     activeFilters.push(filterBy.value.trim());
