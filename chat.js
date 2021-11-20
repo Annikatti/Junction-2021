@@ -1,10 +1,9 @@
 const activeFilters = [];
 const socket = io();
+const uniqueMessages = new Set();
 let username = null;
 
-function pageload() {
-    document.getElementById("uname").innerHTML = localStorage.getItem("username");
-}
+requestAnimationFrame(() => document.getElementById("uname").innerHTML = localStorage.getItem("username"));
 
 socket.on('chat message', (message) => {
     appendMessage(message);
@@ -26,6 +25,12 @@ function sendMessage() {
 }
 
 function appendMessage(message) {
+    // Don't add duplicate messages
+    if (uniqueMessages.has(message.data.id)) {
+        return;
+    }
+
+    uniqueMessages.push(message.data.id);
     const chatWindow = document.getElementById("chat");
     const currentUser = message.data.username === username;
 
@@ -80,7 +85,8 @@ function usersInteractions(messageJson) {
         if (messageJson[i].data.username === localStorage.getItem("username")) {
             recent.push(messageJson[i].data.message);
         }
-        i++
+
+        i++;
     }
 
     for (i = 1; i <= 3; i++) {
