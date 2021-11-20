@@ -3,8 +3,15 @@ let username = null;
 let latestMessages = null;
 
 function pageload(){
+    var message1 = "gg"
+    var message2 = "Good job guys!"
+    var message3 = "Thank you!"
+
     console.log(localStorage.getItem("username"));
     document.getElementById("uname").innerHTML = localStorage.getItem("username");
+    document.getElementById("message1").innerHTML= localStorage.getItem("username") +": "+ message1
+    document.getElementById("message2").innerHTML= localStorage.getItem("username") +": "+ message2
+    document.getElementById("message3").innerHTML= localStorage.getItem("username") +": "+ message3
 }
 
 requestAnimationFrame(() => {
