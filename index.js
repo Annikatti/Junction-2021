@@ -3,6 +3,14 @@ let username = null;
 let latestMessages = null;
 
 var socket = io();
+requestAnimationFrame(() => {
+    getLatestMessages();
+    document.getElementById("username").value = username;
+});
+
+var socket = io();
+requestAnimationFrame(() => getLatestMessages());
+
 
 function addWord() {
     const filterBy = document.getElementById("filter-by");
@@ -34,14 +42,21 @@ function getLatestMessages() {
     try {
         xmlHttp.open("GET", 'https://us-central1-junction-2021-fee21.cloudfunctions.net/webApi/api/v1/messages', false);
         xmlHttp.send(null);
-        latestMessages = JSON.parse(xmlHttp.responseText).sort((a, b) => a.data.createdAt > b.data.createdAt);
+        latestMessages = JSON.parse(xmlHttp.responseText).sort((a, b) => a.data.createdAt > b.data.createdAt ? 1 : -1);
 
         const chatWindow = document.getElementById("chat");
         chatWindow.innerHTML = "";
         latestMessages.forEach(message => {
+            const currentUser = message.data.username === username; 
+
             const messageContainer = document.createElement("div");
             messageContainer.setAttribute("class", "message-container");
             messageContainer.setAttribute("id", message.id);
+
+            if (currentUser) {
+                messageContainer.style.backgroundColor = "#6b0772";
+                messageContainer.style.textAlign = "right";
+            }
 
             const messageContent = document.createElement("p");
             messageContent.innerHTML = `${message.data.username}: ${message.data.message}`;
@@ -85,10 +100,13 @@ function postMessage(messageContent) {
 }
 
 async function sendMessage() {
-    username = document.getElementById("username").value;
+    let user = document.getElementById("username");
+    username = user.value;
     if (!username) {
-        alert("You need to give a username!");
+        user.style.borderColor = "red";
         return;
+    } else {
+        user.style.border = null;
     }
 
     const messageElement = document.getElementById("message");

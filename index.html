@@ -49,7 +49,7 @@
     </section>
 
     <section id="store">
-        Stor
+        Store
     </section>
 
     <section id="settings">
@@ -69,15 +69,16 @@
             <p id="active-filters"></p>
         </div>
     </section>
-    
+
     <label for="username" id="username-label">username</label>
     <input id="username" type="text">
     <!-- <button onclick="getLatestMessages()">Refresh messages</button> -->
-    <div id="chat">
-    </div>
-    <div id="send-message">
-        <input type="text" name="message" id="message">
-        <button onclick="sendMessage()">Send</button>
+    <div id="chat-container">
+        <div id="chat"></div>
+        <div id="send-message">
+            <textarea name="message" id="message"></textarea>
+            <button onclick="sendMessage()">Send</button>
+        </div>
     </div>
 </body>
 

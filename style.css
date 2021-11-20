@@ -98,16 +98,20 @@ img {
 }
 
 /* CHAT */
-#chat {
-    max-height: 150px;
+#chat-container {
+    max-height: 250px;
     max-width: 600px;
     width: 100%;
-    overflow-y: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 15px;
     position: absolute;
     bottom: 55px;
     right: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    overflow-y: auto;
+}
+
+#chat {
+    width: 100%;
 }
 
 #username-label {
@@ -145,28 +149,32 @@ img {
     text-align: right;
 }
 
-#chat .likes {
-    display: flex;
-    flex-direction: row;
-}
-
-#chat .likes p {
-    margin-right: 15px;
-}
-
-#send-message {
+#chat-container {
     max-width: 600px;
     width: 100%;
-    position: absolute;
-    bottom: 25px;
-    right: 25px;
 }
 
-#send-message input {
-    max-width: calc(100% - 80px);
+#chat-container #send-message {
+    display: flex;
+    height: 60px;
+}
+
+#chat-container textarea {
     width: 100%;
     margin: 2.5px;
     border-radius: 3px;
+    resize: none;
+}
+
+#chat-container button {
+    width: 120px;
+    margin: 2.5px;
+    border-radius: 3px;
+    resize: none;
+    background-color: rgb(66, 19, 177);
+    border: none;
+    color: #fff;
+    font-weight: 700;
 }
 
 /* CHAT */
