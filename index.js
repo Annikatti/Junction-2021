@@ -107,9 +107,9 @@ function usersInteractions(messageJson){
         i++
     }
     console.log(recent)
-    document.getElementById("message3").innerHTML= localStorage.getItem("username") +": "+ recent[recent.length-3]
-    document.getElementById("message1").innerHTML= localStorage.getItem("username") +": "+ recent[recent.length-2]
-    document.getElementById("message2").innerHTML= localStorage.getItem("username") +": "+ recent[recent.length-1]
+    document.getElementById("message1").innerHTML= localStorage.getItem("username") +": "+ recent[recent.length-3]
+    document.getElementById("message2").innerHTML= localStorage.getItem("username") +": "+ recent[recent.length-2]
+    document.getElementById("message3").innerHTML= localStorage.getItem("username") +": "+ recent[recent.length-1]
   
 }
 
