@@ -1,7 +1,6 @@
 const activeFilters = [];
 const socket = io();
 const uniqueMessages = new Set();
-let username = null;
 
 requestAnimationFrame(() => document.getElementById("uname").innerHTML = localStorage.getItem("username"));
 
@@ -13,11 +12,9 @@ socket.on('chat message', (message) => {
 
 function sendMessage() {
     const messageElement = document.getElementById("message");
-    const user = document.getElementById("username");
-    username = user.value;
 
     socket.emit('chat message', {
-        username: username,
+        username: localStorage.getItem("username"),
         message: messageElement.value
     });
 
@@ -32,7 +29,7 @@ function appendMessage(message) {
 
     uniqueMessages.add(message.data.id);
     const chatWindow = document.getElementById("chat");
-    const currentUser = message.data.username === username;
+    const currentUser = message.data.username === localStorage.getItem("username");
 
     const messageContainer = document.createElement("div");
     messageContainer.setAttribute("class", "message-container");
