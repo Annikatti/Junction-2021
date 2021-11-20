@@ -94,19 +94,16 @@ async function sendMessage() {
 }
 
 function usersInteractions(messageJson){
-    var messageAmount = 0;
     var recent =[]
     for (i=0; i<messageJson.length; i++){
         if (messageJson[i].data.username === localStorage.getItem("username")){
-            recent.push(messageJson[i].data.message)
-            messageAmount ++;
+            recent.push(messageJson[i].data.message);
         }
         i++
     }
-    console.log(recent)
-    document.getElementById("message1").innerHTML= localStorage.getItem("username") +": "+ recent[recent.length-3]
-    document.getElementById("message2").innerHTML= localStorage.getItem("username") +": "+ recent[recent.length-2]
-    document.getElementById("message3").innerHTML= localStorage.getItem("username") +": "+ recent[recent.length-1]
+    for(i=1; i<=3; i++){
+        document.getElementById("message"+i).innerHTML= localStorage.getItem("username") +": "+ recent[recent.length-i];
+    }
   
 }
 
