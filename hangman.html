@@ -1,23 +1,28 @@
 <!DOCTYPE html>
-<html lang ="en">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href = "hangman.css" rel ="stylesheet">
+    <link href="hangman.css" rel="stylesheet">
 </head>
+
 <body>
     <header>
         <h1>EMPATHIC MINIGAME</h1>
     </header>
-    <img id ="tree">
+    <img id="tree">
     <br>
-    <h1 id ="announce"></h2>
+    <h1 id="announce"></h1>
+    <button style="display: none;" id="back" onclick="back()">Back to Best Game Ever!</button>
     <br>
-    <div id ="guessLines"></div>
+    <div id="guessLines"></div>
     <br>
-        <input id ="input"><button id ="button" onclick ="guess();" maxlength="1">Guess</button>
+    <input type="text" id="input" maxlength="1">
+    <button id="button" onclick="guess();">Guess</button>
     <br>
-    <div id ="usedLetters"></div>
-    <script src = "hangman.js"></script>
+    <div id="usedLetters"></div>
+    <script src="hangman.js"></script>
 </body>
+
 </html>

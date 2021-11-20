@@ -73,7 +73,10 @@ function checkWin(){
     }
 
     if(condition == 0){
+        document.getElementById("input").style.pointerEvents = "none";
+        document.getElementById("button").style.pointerEvents = "none";
         document.getElementById("announce").innerHTML = "Correct, remember to be more empathic =)";
+        document.getElementById("back").style.display = "inline-block";
     }
 }
 
@@ -83,4 +86,8 @@ function instantWin(guess){
         document.getElementById("guessLines").innerHTML = words[index];
         return true;
     }
+}
+
+function back() {
+    window.location.href = "chat.html";
 }
