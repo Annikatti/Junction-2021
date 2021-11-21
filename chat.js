@@ -91,6 +91,6 @@ function usersInteractions(message) {
     }
 
     for (i = 0; i < recent.length; i++) {
-        document.getElementById("message" + i + 1).innerHTML = `${localStorage.getItem("username")}: ${message}`;
+        document.getElementById(`message${i + 1}`).innerHTML = `${localStorage.getItem("username")}: ${message}`;
     }
 }
