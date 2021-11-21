@@ -1,5 +1,4 @@
 const activeFilters = [];
-const recent = []
 const socket = io();
 const uniqueMessages = new Set();
 
@@ -83,6 +82,12 @@ function changeTab(newTab) {
 }
 
 function usersInteractions(message) {
+    const recent = Array.from(localStorage.getItem("recent"));
+
+    if (!recent) {
+        recent = [];
+    }
+
     recent.push(message);
     if (recent.length === 3) {
         recent[2] = recent[1];
@@ -90,6 +95,7 @@ function usersInteractions(message) {
         recent[0] = message;
     }
 
+    localStorage.setItem("recent", recent);
     for (i = 0; i < recent.length; i++) {
         document.getElementById(`message${i + 1}`).innerHTML = `${localStorage.getItem("username")}: ${recent[i]}`;
     }
