@@ -2,7 +2,10 @@ const activeFilters = [];
 const socket = io();
 const uniqueMessages = new Set();
 
-requestAnimationFrame(() => document.getElementById("uname").innerHTML = localStorage.getItem("username"));
+requestAnimationFrame(() => {
+    document.getElementById("uname").innerHTML = localStorage.getItem("username");
+    usersInteractions();
+});
 
 socket.on('chat message', (message) => {
     appendMessage(message);
@@ -82,20 +85,15 @@ function changeTab(newTab) {
 }
 
 function usersInteractions(message) {
-    const recent = Array.from(localStorage.getItem("recent"));
+    let recent = JSON.parse(localStorage.getItem("recent") || "[]");
 
-    if (!recent) {
-        recent = [];
+    if (message) recent.unshift(message);
+
+    if (recent.length > 3) {
+        recent.pop();
     }
 
-    recent.push(message);
-    if (recent.length === 3) {
-        recent[2] = recent[1];
-        recent[1] = recent[0];
-        recent[0] = message;
-    }
-
-    localStorage.setItem("recent", recent);
+    localStorage.setItem("recent", JSON.stringify(recent));
     for (i = 0; i < recent.length; i++) {
         document.getElementById(`message${i + 1}`).innerHTML = `${localStorage.getItem("username")}: ${recent[i]}`;
     }
