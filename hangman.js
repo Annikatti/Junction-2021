@@ -59,6 +59,9 @@ function checkFail(usedLetter){
     document.getElementById("usedLetters").innerHTML = used;
     if(counter == 6){
         document.getElementById("announce").innerHTML = "FAIL, word was " + words[index];
+        document.getElementById("input").style.pointerEvents = "none";
+        document.getElementById("button").style.pointerEvents = "none";
+        document.getElementById("retry").style.display = "inline-block";
     }
     fail =0;
 }
@@ -90,4 +93,8 @@ function instantWin(guess){
 
 function back() {
     window.location.href = "chat.html";
+}
+
+function retry() {
+    window.location.href = "hangman.html";
 }
