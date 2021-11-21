@@ -83,15 +83,14 @@ function changeTab(newTab) {
 }
 
 function usersInteractions(message) {
-    const text = message.data.message;
-    recent.push(text);
+    recent.push(message);
     if (recent.length === 3) {
         recent[2] = recent[1];
         recent[1] = recent[0];
-        recent[0] = text;
+        recent[0] = message;
     }
 
     for (i = 0; i < recent.length; i++) {
-        document.getElementById("message" + i + 1).innerHTML = `${localStorage.getItem("username")}: ${text}`;
+        document.getElementById("message" + i + 1).innerHTML = `${localStorage.getItem("username")}: ${message}`;
     }
 }
